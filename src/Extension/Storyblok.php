@@ -54,8 +54,8 @@ final class Storyblok extends Extension
     {
         parent::__construct($options);
 
-        $this->options['extensions'] = array_merge($this->options['extensions'], $options['extensions'] ?? []);
-        $this->options['blokOptions'] = array_merge($this->options['blokOptions'], $options['blokOptions'] ?? []);
+        $this->options['extensions'] = array_merge($this->addOptions()['extensions'], $options['extensions'] ?? []);
+        $this->options['blokOptions'] = array_merge($this->addOptions()['blokOptions'], $options['blokOptions'] ?? []);
     }
 
     /**
