@@ -54,7 +54,14 @@ final class Storyblok extends Extension
     {
         parent::__construct($options);
 
-        $this->options['extensions'] = array_merge($this->addOptions()['extensions'], $options['extensions'] ?? []);
+        if (\array_key_exists('extensions', $options)) {
+            @trigger_error(
+                \sprintf('Passing "extensions" to the Storyblok extension is deprecated and will be removed in a future version. Use "override_extensions" instead.'),
+                \E_USER_DEPRECATED
+            );
+        }
+
+        $this->options['override_extensions'] = array_merge($this->addOptions()['override_extensions'], $options['override_extensions'] ?? []);
         $this->options['blokOptions'] = array_merge($this->addOptions()['blokOptions'], $options['blokOptions'] ?? []);
     }
 
@@ -64,38 +71,7 @@ final class Storyblok extends Extension
     public function addOptions(): array
     {
         return [
-            'extensions' => [
-                'image' => true,
-                'text' => true,
-                'paragraph' => true,
-                'link' => true,
-                'blockquote' => true,
-                'bold' => true,
-                'code' => true,
-                'highlight' => true,
-                'strike' => true,
-                'subscript' => true,
-                'superscript' => true,
-                'textStyle' => true,
-                'italic' => true,
-                'underline' => true,
-                'hardBreak' => true,
-                'document' => true,
-                'horizontalRule' => true,
-                'mention' => true,
-                'taskList' => true,
-                'taskItem' => true,
-                'table' => true,
-                'tableRow' => true,
-                'tableCell' => true,
-                'tableHeader' => true,
-                'bulletList' => true,
-                'orderedList' => true,
-                'listItem' => true,
-                'heading' => true,
-                'codeBlock' => true,
-                'blok' => true,
-            ],
+            'override_extensions' => [],
             'blokOptions' => [
                 'renderer' => null, // The user must provide a renderer function
             ],
@@ -107,39 +83,42 @@ final class Storyblok extends Extension
      */
     public function addExtensions(): array
     {
-        return array_filter([
-            $this->options['extensions']['image'] ? new Image() : null,
-            $this->options['extensions']['text'] ? new Text() : null,
-            $this->options['extensions']['paragraph'] ? new Paragraph() : null,
-            $this->options['extensions']['link'] ? new Link() : null,
-            $this->options['extensions']['blockquote'] ? new Blockquote() : null,
-            $this->options['extensions']['bold'] ? new Bold() : null,
-            $this->options['extensions']['code'] ? new Code() : null,
-            $this->options['extensions']['highlight'] ? new Highlight() : null,
-            $this->options['extensions']['strike'] ? new Strike() : null,
-            $this->options['extensions']['subscript'] ? new Subscript() : null,
-            $this->options['extensions']['superscript'] ? new Superscript() : null,
-            $this->options['extensions']['textStyle'] ? new TextStyle() : null,
-            $this->options['extensions']['italic'] ? new Italic() : null,
-            $this->options['extensions']['underline'] ? new Underline() : null,
-            $this->options['extensions']['document'] ? new Document() : null,
-            $this->options['extensions']['horizontalRule'] ? new HorizontalRule() : null,
-            $this->options['extensions']['mention'] ? new Mention() : null,
-            $this->options['extensions']['taskList'] ? new TaskList() : null,
-            $this->options['extensions']['taskItem'] ? new TaskItem() : null,
-            $this->options['extensions']['hardBreak'] ? new HardBreak() : null,
-            $this->options['extensions']['table'] ? new Table() : null,
-            $this->options['extensions']['tableRow'] ? new TableRow() : null,
-            $this->options['extensions']['tableCell'] ? new TableCell() : null,
-            $this->options['extensions']['tableHeader'] ? new TableHeader() : null,
-            $this->options['extensions']['bulletList'] ? new BulletList() : null,
-            $this->options['extensions']['orderedList'] ? new OrderedList() : null,
-            $this->options['extensions']['listItem'] ? new ListItem() : null,
-            $this->options['extensions']['heading'] ? new Heading() : null,
-            $this->options['extensions']['codeBlock'] ? new CodeBlock() : null,
-            $this->options['extensions']['blok'] ? new Blok([
-                'renderer' => $this->options['blokOptions']['renderer'],
-            ]) : null,
-        ]);
+        return \array_merge(
+            [
+                Image::$name => new Image(),
+                Text::$name => new Text(),
+                Paragraph::$name => new Paragraph(),
+                Link::$name => new Link(),
+                Blockquote::$name => new Blockquote(),
+                Bold::$name => new Bold(),
+                Code::$name => new Code(),
+                Highlight::$name => new Highlight(),
+                Strike::$name => new Strike(),
+                Subscript::$name => new Subscript(),
+                Superscript::$name => new Superscript(),
+                TextStyle::$name => new TextStyle(),
+                Italic::$name => new Italic(),
+                Underline::$name => new Underline(),
+                Document::$name => new Document(),
+                HorizontalRule::$name => new HorizontalRule(),
+                Mention::$name => new Mention(),
+                TaskList::$name => new TaskList(),
+                TaskItem::$name => new TaskItem(),
+                HardBreak::$name => new HardBreak(),
+                Table::$name => new Table(),
+                TableRow::$name => new TableRow(),
+                TableCell::$name => new TableCell(),
+                TableHeader::$name => new TableHeader(),
+                BulletList::$name => new BulletList(),
+                OrderedList::$name => new OrderedList(),
+                ListItem::$name => new ListItem(),
+                Heading::$name => new Heading(),
+                CodeBlock::$name => new CodeBlock(),
+                Blok::$name => new Blok([
+                    'renderer' => $this->options['blokOptions']['renderer']
+                ]),
+            ],
+            $this->options['extensions'],
+        );
     }
 }
