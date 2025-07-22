@@ -90,9 +90,8 @@ use Storyblok\Tiptap\Extension\Storyblok;
 $editor = new Editor([
     'extensions' => [
         new Storyblok([
-            'extensions' => [
-                'codeBlock' => false,
-                'heading' => false,
+            'override_extensions' => [
+                'codeBlock' => new MyCustomCodeBlock(),
             ]
         ]),
     ],
