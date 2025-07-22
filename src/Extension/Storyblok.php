@@ -65,6 +65,7 @@ final class Storyblok extends Extension
         }
 
         $this->options['override_extensions'] = array_merge($this->addOptions()['override_extensions'], $options['override_extensions'] ?? []);
+        $this->options['disable_extensions'] = array_merge($this->addOptions()['disable_extensions'], $options['disable_extensions'] ?? []);
         $this->options['blokOptions'] = array_merge($this->addOptions()['blokOptions'], $options['blokOptions'] ?? []);
     }
 
@@ -75,6 +76,7 @@ final class Storyblok extends Extension
     {
         return [
             'override_extensions' => [],
+            'disable_extensions' => [],
             'extensions' => [],
             'blokOptions' => [
                 'renderer' => null, // The user must provide a renderer function
@@ -87,7 +89,7 @@ final class Storyblok extends Extension
      */
     public function addExtensions(): array
     {
-        return \array_merge(
+        return \array_filter(\array_merge(
             [
                 Image::$name => new Image(),
                 Text::$name => new Text(),
@@ -123,7 +125,7 @@ final class Storyblok extends Extension
                 ]),
             ],
             $this->options['override_extensions'],
-            ...\array_map(static fn(Node $node) => [$node::$name => $node], \array_filter($this->options['extensions'])),
-        );
+            ...\array_map(static fn(Extension $extension) => [$extension::$name => $extension], \array_filter($this->options['extensions'])),
+        ), fn(string $name) => !\in_array($name, $this->options['disable_extensions']), \ARRAY_FILTER_USE_KEY);
     }
 }

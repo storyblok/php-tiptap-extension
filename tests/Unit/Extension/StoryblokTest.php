@@ -55,6 +55,7 @@ final class StoryblokTest extends TestCase
     {
         self::assertSame([
             'override_extensions' => [],
+            'disable_extensions' => [],
             'extensions' => [],
             'blokOptions' => [
                 'renderer' => null, // The user must provide a renderer function
@@ -69,11 +70,27 @@ final class StoryblokTest extends TestCase
     {
         $extension = new Storyblok([
             'extensions' => [
-                'image' => false,
+                Image::$name => false,
             ],
         ]);
 
         self::assertArrayNotHasKey('image', $extension->options);
+    }
+
+    /**
+     * @test
+     */
+    public function disableExtensions(): void
+    {
+        $extension = new Storyblok([
+            'disable_extensions' => [
+                Image::$name,
+                Blok::$name,
+            ],
+        ]);
+
+        self::assertArrayNotHasKey('image', $extension->options);
+        self::assertArrayNotHasKey('blok', $extension->options);
     }
 
     /**
