@@ -16,6 +16,11 @@ parameters:
 			path: src/Node/CodeBlock.php
 
 		-
+			message: "#^Property Storyblok\\\\Tiptap\\\\Node\\\\Emoji\\:\\:\\$name has no type specified\\.$#"
+			count: 1
+			path: src/Node/Emoji.php
+
+		-
 			message: "#^Property Storyblok\\\\Tiptap\\\\Node\\\\ListItem\\:\\:\\$name has no type specified\\.$#"
 			count: 1
 			path: src/Node/ListItem.php
