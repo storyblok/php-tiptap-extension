@@ -81,7 +81,7 @@ echo $editor->getHTML();
 
 You can disable specific **Tiptap extensions** within Storyblok.
 
-### Example: Disabling `codeBlock` and `heading`
+### Example: Overriding Extensions
 
 ```php
 use Tiptap\Editor;
@@ -90,9 +90,8 @@ use Storyblok\Tiptap\Extension\Storyblok;
 $editor = new Editor([
     'extensions' => [
         new Storyblok([
-            'extensions' => [
-                'codeBlock' => false,
-                'heading' => false,
+            'override_extensions' => [
+                'codeBlock' => new MyCustomCodeBlock(),
             ]
         ]),
     ],
@@ -104,6 +103,28 @@ echo $editor->getHTML();
 ```
 
 For a complete list of enabled extensions by default, check out [`Storyblok\Tiptap\Extension\Storyblok`](src/Extension/Storyblok.php).
+
+### Example: Disabling Extensions
+
+```php
+use Tiptap\Editor;
+use Storyblok\Tiptap\Extension\Storyblok;
+
+$editor = new Editor([
+    'extensions' => [
+        new Storyblok([
+            'disable_extensions' => [
+                'codeBlock',
+                'heading',
+            ]
+        ]),
+    ],
+]);
+
+$editor->setContent(['type' => 'doc', 'content' => [['type' => 'paragraph', 'content' => [['type' => 'text', 'text' => 'Hello World']]]]);
+
+echo $editor->getHTML();
+```
 
 ## License
 

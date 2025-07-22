@@ -53,46 +53,58 @@ final class StoryblokTest extends TestCase
      */
     public function addOptions(): void
     {
-        self::assertSame(
-            [
-                'extensions' => [
-                    'image' => true,
-                    'text' => true,
-                    'paragraph' => true,
-                    'link' => true,
-                    'blockquote' => true,
-                    'bold' => true,
-                    'code' => true,
-                    'highlight' => true,
-                    'strike' => true,
-                    'subscript' => true,
-                    'superscript' => true,
-                    'textStyle' => true,
-                    'italic' => true,
-                    'underline' => true,
-                    'hardBreak' => true,
-                    'document' => true,
-                    'horizontalRule' => true,
-                    'mention' => true,
-                    'taskList' => true,
-                    'taskItem' => true,
-                    'table' => true,
-                    'tableRow' => true,
-                    'tableCell' => true,
-                    'tableHeader' => true,
-                    'bulletList' => true,
-                    'orderedList' => true,
-                    'listItem' => true,
-                    'heading' => true,
-                    'codeBlock' => true,
-                    'blok' => true,
-                ],
-                'blokOptions' => [
-                    'renderer' => null, // The user must provide a renderer function
-                ],
+        self::assertSame([
+            'override_extensions' => [],
+            'disable_extensions' => [],
+            'extensions' => [],
+            'blokOptions' => [
+                'renderer' => null, // The user must provide a renderer function
             ],
-            (new Storyblok())->addOptions(),
-        );
+        ], (new Storyblok())->addOptions());
+    }
+
+    /**
+     * @test
+     */
+    public function usingDeprecatedExtensionsKey(): void
+    {
+        $extension = new Storyblok([
+            'extensions' => [
+                Image::$name => false,
+            ],
+        ]);
+
+        self::assertArrayNotHasKey('image', $extension->options);
+    }
+
+    /**
+     * @test
+     */
+    public function disableExtensions(): void
+    {
+        $extension = new Storyblok([
+            'disable_extensions' => [
+                Image::$name,
+                Blok::$name,
+            ],
+        ]);
+
+        self::assertArrayNotHasKey('image', $extension->options);
+        self::assertArrayNotHasKey('blok', $extension->options);
+    }
+
+    /**
+     * @test
+     */
+    public function usingOverrideExtensions(): void
+    {
+        $extension = new Storyblok([
+            'override_extensions' => [
+                'image' => $object = new Image(),
+            ],
+        ]);
+
+        self::assertSame($object, $extension->addExtensions()['image']);
     }
 
     /**
@@ -102,36 +114,36 @@ final class StoryblokTest extends TestCase
     {
         self::assertEquals(
             [
-                new Image(),
-                new Text(),
-                new Paragraph(),
-                new Link(),
-                new Blockquote(),
-                new Bold(),
-                new Code(),
-                new Highlight(),
-                new Strike(),
-                new Subscript(),
-                new Superscript(),
-                new TextStyle(),
-                new Italic(),
-                new Underline(),
-                new Document(),
-                new HorizontalRule(),
-                new Mention(),
-                new TaskList(),
-                new TaskItem(),
-                new HardBreak(),
-                new Table(),
-                new TableRow(),
-                new TableCell(),
-                new TableHeader(),
-                new BulletList(),
-                new OrderedList(),
-                new ListItem(),
-                new Heading(),
-                new CodeBlock(),
-                new Blok(),
+                Image::$name => new Image(),
+                Text::$name => new Text(),
+                Paragraph::$name => new Paragraph(),
+                Link::$name => new Link(),
+                Blockquote::$name => new Blockquote(),
+                Bold::$name => new Bold(),
+                Code::$name => new Code(),
+                Highlight::$name => new Highlight(),
+                Strike::$name => new Strike(),
+                Subscript::$name => new Subscript(),
+                Superscript::$name => new Superscript(),
+                TextStyle::$name => new TextStyle(),
+                Italic::$name => new Italic(),
+                Underline::$name => new Underline(),
+                Document::$name => new Document(),
+                HorizontalRule::$name => new HorizontalRule(),
+                Mention::$name => new Mention(),
+                TaskList::$name => new TaskList(),
+                TaskItem::$name => new TaskItem(),
+                HardBreak::$name => new HardBreak(),
+                Table::$name => new Table(),
+                TableRow::$name => new TableRow(),
+                TableCell::$name => new TableCell(),
+                TableHeader::$name => new TableHeader(),
+                BulletList::$name => new BulletList(),
+                OrderedList::$name => new OrderedList(),
+                ListItem::$name => new ListItem(),
+                Heading::$name => new Heading(),
+                CodeBlock::$name => new CodeBlock(),
+                Blok::$name => new Blok(),
             ],
             (new Storyblok())->addExtensions(),
         );
