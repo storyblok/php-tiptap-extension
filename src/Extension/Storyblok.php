@@ -20,6 +20,7 @@ use Storyblok\Tiptap\Node\Heading;
 use Storyblok\Tiptap\Node\ListItem;
 use Storyblok\Tiptap\Node\OrderedList;
 use Tiptap\Core\Extension;
+use Tiptap\Core\Node;
 use Tiptap\Marks\Bold;
 use Tiptap\Marks\Code;
 use Tiptap\Marks\Highlight;
@@ -59,6 +60,8 @@ final class Storyblok extends Extension
                 \sprintf('Passing "extensions" to the Storyblok extension is deprecated and will be removed in a future version. Use "override_extensions" instead.'),
                 \E_USER_DEPRECATED
             );
+
+            $this->options['extensions'] = array_merge($this->addOptions()['extensions'], $options['extensions'] ?? []);
         }
 
         $this->options['override_extensions'] = array_merge($this->addOptions()['override_extensions'], $options['override_extensions'] ?? []);
@@ -72,6 +75,7 @@ final class Storyblok extends Extension
     {
         return [
             'override_extensions' => [],
+            'extensions' => [],
             'blokOptions' => [
                 'renderer' => null, // The user must provide a renderer function
             ],
@@ -118,7 +122,8 @@ final class Storyblok extends Extension
                     'renderer' => $this->options['blokOptions']['renderer']
                 ]),
             ],
-            $this->options['extensions'],
+            $this->options['override_extensions'],
+            ...\array_map(static fn(Node $node) => [$node::$name => $node], \array_filter($this->options['extensions'])),
         );
     }
 }
