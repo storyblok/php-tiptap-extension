@@ -18,6 +18,7 @@ use Storyblok\Tiptap\Extension\Storyblok;
 use Storyblok\Tiptap\Node\Blok;
 use Storyblok\Tiptap\Node\BulletList;
 use Storyblok\Tiptap\Node\CodeBlock;
+use Storyblok\Tiptap\Node\Emoji;
 use Storyblok\Tiptap\Node\Heading;
 use Storyblok\Tiptap\Node\ListItem;
 use Storyblok\Tiptap\Node\OrderedList;
@@ -143,6 +144,7 @@ final class StoryblokTest extends TestCase
                 ListItem::$name => new ListItem(),
                 Heading::$name => new Heading(),
                 CodeBlock::$name => new CodeBlock(),
+                Emoji::$name => new Emoji(),
                 Blok::$name => new Blok(),
             ],
             (new Storyblok())->addExtensions(),
