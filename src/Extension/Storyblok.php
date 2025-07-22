@@ -20,7 +20,6 @@ use Storyblok\Tiptap\Node\Heading;
 use Storyblok\Tiptap\Node\ListItem;
 use Storyblok\Tiptap\Node\OrderedList;
 use Tiptap\Core\Extension;
-use Tiptap\Core\Node;
 use Tiptap\Marks\Bold;
 use Tiptap\Marks\Code;
 use Tiptap\Marks\Highlight;
@@ -57,8 +56,8 @@ final class Storyblok extends Extension
 
         if (\array_key_exists('extensions', $options)) {
             @trigger_error(
-                \sprintf('Passing "extensions" to the Storyblok extension is deprecated and will be removed in a future version. Use "override_extensions" instead.'),
-                \E_USER_DEPRECATED
+                'Passing "extensions" to the Storyblok extension is deprecated and will be removed in a future version. Use "override_extensions" instead.',
+                \E_USER_DEPRECATED,
             );
 
             $this->options['extensions'] = array_merge($this->addOptions()['extensions'], $options['extensions'] ?? []);
@@ -121,11 +120,11 @@ final class Storyblok extends Extension
                 Heading::$name => new Heading(),
                 CodeBlock::$name => new CodeBlock(),
                 Blok::$name => new Blok([
-                    'renderer' => $this->options['blokOptions']['renderer']
+                    'renderer' => $this->options['blokOptions']['renderer'],
                 ]),
             ],
             $this->options['override_extensions'],
-            ...\array_map(static fn(Extension $extension) => [$extension::$name => $extension], \array_filter($this->options['extensions'])),
-        ), fn(string $name) => !\in_array($name, $this->options['disable_extensions']), \ARRAY_FILTER_USE_KEY);
+            ...\array_map(static fn (Extension $extension) => [$extension::$name => $extension], \array_filter($this->options['extensions'])),
+        ), fn (string $name) => !\in_array($name, $this->options['disable_extensions'], true), \ARRAY_FILTER_USE_KEY);
     }
 }

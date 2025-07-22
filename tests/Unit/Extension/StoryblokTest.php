@@ -101,7 +101,7 @@ final class StoryblokTest extends TestCase
         $extension = new Storyblok([
             'override_extensions' => [
                 'image' => $object = new Image(),
-            ]
+            ],
         ]);
 
         self::assertSame($object, $extension->addExtensions()['image']);
