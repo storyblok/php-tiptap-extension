@@ -14,7 +14,7 @@
         }
     ],
     "require": {
-        "php": ">=8.3",
+        "php": ">=8.2",
         "thecodingmachine/safe": "^2.0 || ^3.0",
         "ueberdosis/tiptap-php": "^1.4"
     },
