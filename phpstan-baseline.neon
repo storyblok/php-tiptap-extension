@@ -29,3 +29,38 @@ parameters:
 			message: "#^Property Storyblok\\\\Tiptap\\\\Node\\\\OrderedList\\:\\:\\$name has no type specified\\.$#"
 			count: 1
 			path: src/Node/OrderedList.php
+
+		-
+			message: "#^Property Storyblok\\\\Tiptap\\\\Mark\\\\Styled\\:\\:\\$name has no type specified\\.$#"
+			count: 1
+			path: src/Mark/Styled.php
+
+		-
+			message: "#^Method Storyblok\\\\Tiptap\\\\Mark\\\\Styled\\:\\:addOptions\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/Mark/Styled.php
+
+		-
+			message: "#^Method Storyblok\\\\Tiptap\\\\Mark\\\\Styled\\:\\:addAttributes\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/Mark/Styled.php
+
+		-
+			message: "#^Method Storyblok\\\\Tiptap\\\\Mark\\\\Styled\\:\\:parseHTML\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/Mark/Styled.php
+
+		-
+			message: "#^Method Storyblok\\\\Tiptap\\\\Mark\\\\Styled\\:\\:renderHTML\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/Mark/Styled.php
+
+		-
+			message: "#^Method Storyblok\\\\Tiptap\\\\Mark\\\\Styled\\:\\:renderHTML\\(\\) has parameter \\$HTMLAttributes with no type specified\\.$#"
+			count: 1
+			path: src/Mark/Styled.php
+
+		-
+			message: "#^Method Storyblok\\\\Tiptap\\\\Mark\\\\Styled\\:\\:renderHTML\\(\\) has parameter \\$mark with no type specified\\.$#"
+			count: 1
+			path: src/Mark/Styled.php
