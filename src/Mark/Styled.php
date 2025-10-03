@@ -9,7 +9,6 @@ class Styled extends Mark
 {
     public static $name = 'styled';
 
-
     public function addOptions()
     {
         return [
