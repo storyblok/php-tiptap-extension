@@ -15,6 +15,7 @@ namespace Storyblok\Tiptap\Tests\Unit\Extension;
 
 use PHPUnit\Framework\TestCase;
 use Storyblok\Tiptap\Extension\Storyblok;
+use Storyblok\Tiptap\Mark\Styled;
 use Storyblok\Tiptap\Node\Blok;
 use Storyblok\Tiptap\Node\BulletList;
 use Storyblok\Tiptap\Node\CodeBlock;
@@ -145,6 +146,7 @@ final class StoryblokTest extends TestCase
                 Heading::$name => new Heading(),
                 CodeBlock::$name => new CodeBlock(),
                 Emoji::$name => new Emoji(),
+                Styled::$name => new Styled(),
                 Blok::$name => new Blok(),
             ],
             (new Storyblok())->addExtensions(),
