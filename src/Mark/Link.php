@@ -49,15 +49,15 @@ class Link extends Mark
 
     public function renderHTML($mark, $HTMLAttributes = [])
     {
-        if ($mark->attrs?->linktype === 'email') {
+        if (isset($mark->attrs->linktype) && $mark->attrs->linktype === 'email') {
             $HTMLAttributes['href'] = 'mailto:' . $mark->attrs->href;
         }
 
-        if ($mark->attrs?->anchor) {
+        if (isset($mark->attrs->anchor) && $mark->attrs->anchor) {
             $HTMLAttributes['href'] = $mark->attrs->href . '#' . $mark->attrs->anchor;
         }
 
-        if (isset($mark->attrs->custom) && is_iterable($mark->attrs->custom)) {
+        if (isset($mark->attrs->custom)) {
             foreach ($mark->attrs->custom as $key => $value) {
                 $HTMLAttributes[$key] = $value;
             }

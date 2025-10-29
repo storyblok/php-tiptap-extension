@@ -99,3 +99,8 @@ parameters:
 			message: "#^Method Storyblok\\\\Tiptap\\\\Mark\\\\Link\\:\\:renderHTML\\(\\) has parameter \\$mark with no type specified\\.$#"
 			count: 1
 			path: src/Mark/Link.php
+
+		-
+			message: "#^Access to an undefined property object::\\$href\\.$#"
+			count: 2
+			path: src/Mark/Link.php
