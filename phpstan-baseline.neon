@@ -64,3 +64,38 @@ parameters:
 			message: "#^Method Storyblok\\\\Tiptap\\\\Mark\\\\Styled\\:\\:renderHTML\\(\\) has parameter \\$mark with no type specified\\.$#"
 			count: 1
 			path: src/Mark/Styled.php
+
+		-
+			message: "#^Property Storyblok\\\\Tiptap\\\\Mark\\\\Link\\:\\:\\$name has no type specified\\.$#"
+			count: 1
+			path: src/Mark/Link.php
+
+		-
+			message: "#^Method Storyblok\\\\Tiptap\\\\Mark\\\\Link\\:\\:addOptions\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/Mark/Link.php
+
+		-
+			message: "#^Method Storyblok\\\\Tiptap\\\\Mark\\\\Link\\:\\:addAttributes\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/Mark/Link.php
+
+		-
+			message: "#^Method Storyblok\\\\Tiptap\\\\Mark\\\\Link\\:\\:parseHTML\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/Mark/Link.php
+
+		-
+			message: "#^Method Storyblok\\\\Tiptap\\\\Mark\\\\Link\\:\\:renderHTML\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/Mark/Link.php
+
+		-
+			message: "#^Method Storyblok\\\\Tiptap\\\\Mark\\\\Link\\:\\:renderHTML\\(\\) has parameter \\$HTMLAttributes with no type specified\\.$#"
+			count: 1
+			path: src/Mark/Link.php
+
+		-
+			message: "#^Method Storyblok\\\\Tiptap\\\\Mark\\\\Link\\:\\:renderHTML\\(\\) has parameter \\$mark with no type specified\\.$#"
+			count: 1
+			path: src/Mark/Link.php

@@ -25,7 +25,6 @@ class Link extends Mark
         return [
             'HTMLAttributes' => [
                 'target' => '_blank',
-                'rel' => 'noopener noreferrer nofollow',
             ],
         ];
     }
@@ -58,7 +57,7 @@ class Link extends Mark
             $HTMLAttributes['href'] = $mark->attrs->href . '#' . $mark->attrs->anchor;
         }
 
-        if ($mark->attrs?->custom) {
+        if (isset($mark->attrs->custom) && is_iterable($mark->attrs->custom)) {
             foreach ($mark->attrs->custom as $key => $value) {
                 $HTMLAttributes[$key] = $value;
             }
