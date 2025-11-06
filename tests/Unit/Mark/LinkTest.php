@@ -33,9 +33,7 @@ final class LinkTest extends TestCase
     public function addOptions(): void
     {
         self::assertSame([
-            'HTMLAttributes' => [
-                'target' => '_blank'
-            ],
+            'HTMLAttributes' => [],
         ], (new Link())->addOptions());
     }
 
@@ -69,7 +67,7 @@ final class LinkTest extends TestCase
             ],
         ]))->setContent($document)->getHTML();
 
-        self::assertSame('<a target="_blank" href="mailto:hello@example.com">Example Email</a>', $result);
+        self::assertSame('<a href="mailto:hello@example.com">Example Email</a>', $result);
     }
 
     /**
@@ -102,7 +100,7 @@ final class LinkTest extends TestCase
             ],
         ]))->setContent($document)->getHTML();
 
-        self::assertSame('<a target="_blank" href="https://storyblok.com#anchor">Example Link</a>', $result);
+        self::assertSame('<a href="https://storyblok.com#anchor">Example Link</a>', $result);
     }
 
     /**
@@ -138,6 +136,6 @@ final class LinkTest extends TestCase
             ],
         ]))->setContent($document)->getHTML();
 
-        self::assertSame('<a target="_blank" href="https://storyblok.com" title="title" custom="custom">Example Link</a>', $result);
+        self::assertSame('<a href="https://storyblok.com" title="title" custom="custom">Example Link</a>', $result);
     }
 }

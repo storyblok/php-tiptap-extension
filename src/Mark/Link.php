@@ -23,9 +23,7 @@ class Link extends Mark
     public function addOptions()
     {
         return [
-            'HTMLAttributes' => [
-                'target' => '_blank',
-            ],
+            'HTMLAttributes' => [],
         ];
     }
 
