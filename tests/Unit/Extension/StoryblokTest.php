@@ -15,6 +15,7 @@ namespace Storyblok\Tiptap\Tests\Unit\Extension;
 
 use PHPUnit\Framework\TestCase;
 use Storyblok\Tiptap\Extension\Storyblok;
+use Storyblok\Tiptap\Mark\Link;
 use Storyblok\Tiptap\Mark\Styled;
 use Storyblok\Tiptap\Node\Blok;
 use Storyblok\Tiptap\Node\BulletList;
@@ -27,7 +28,6 @@ use Tiptap\Marks\Bold;
 use Tiptap\Marks\Code;
 use Tiptap\Marks\Highlight;
 use Tiptap\Marks\Italic;
-use Tiptap\Marks\Link;
 use Tiptap\Marks\Strike;
 use Tiptap\Marks\Subscript;
 use Tiptap\Marks\Superscript;

@@ -16,7 +16,7 @@ namespace Storyblok\Tiptap\Tests\Unit\Mark;
 use PHPUnit\Framework\TestCase;
 use Storyblok\Tiptap\Mark\Styled;
 
-final class MarkTest extends TestCase
+final class StyledTest extends TestCase
 {
     /**
      * @test
