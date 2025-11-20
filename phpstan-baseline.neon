@@ -1,82 +1,17 @@
 parameters:
 	ignoreErrors:
 		-
-			message: "#^Property Storyblok\\\\Tiptap\\\\Node\\\\Blok\\:\\:\\$name has no type specified\\.$#"
-			count: 1
-			path: src/Node/Blok.php
+			message: "#^Access to an undefined property object\\:\\:\\$href\\.$#"
+			count: 2
+			path: src/Mark/Link.php
 
 		-
-			message: "#^Property Storyblok\\\\Tiptap\\\\Node\\\\BulletList\\:\\:\\$name has no type specified\\.$#"
-			count: 1
-			path: src/Node/BulletList.php
-
-		-
-			message: "#^Property Storyblok\\\\Tiptap\\\\Node\\\\CodeBlock\\:\\:\\$name has no type specified\\.$#"
-			count: 1
-			path: src/Node/CodeBlock.php
-
-		-
-			message: "#^Property Storyblok\\\\Tiptap\\\\Node\\\\Emoji\\:\\:\\$name has no type specified\\.$#"
-			count: 1
-			path: src/Node/Emoji.php
-
-		-
-			message: "#^Property Storyblok\\\\Tiptap\\\\Node\\\\ListItem\\:\\:\\$name has no type specified\\.$#"
-			count: 1
-			path: src/Node/ListItem.php
-
-		-
-			message: "#^Property Storyblok\\\\Tiptap\\\\Node\\\\OrderedList\\:\\:\\$name has no type specified\\.$#"
-			count: 1
-			path: src/Node/OrderedList.php
-
-		-
-			message: "#^Property Storyblok\\\\Tiptap\\\\Mark\\\\Styled\\:\\:\\$name has no type specified\\.$#"
-			count: 1
-			path: src/Mark/Styled.php
-
-		-
-			message: "#^Method Storyblok\\\\Tiptap\\\\Mark\\\\Styled\\:\\:addOptions\\(\\) has no return type specified\\.$#"
-			count: 1
-			path: src/Mark/Styled.php
-
-		-
-			message: "#^Method Storyblok\\\\Tiptap\\\\Mark\\\\Styled\\:\\:addAttributes\\(\\) has no return type specified\\.$#"
-			count: 1
-			path: src/Mark/Styled.php
-
-		-
-			message: "#^Method Storyblok\\\\Tiptap\\\\Mark\\\\Styled\\:\\:parseHTML\\(\\) has no return type specified\\.$#"
-			count: 1
-			path: src/Mark/Styled.php
-
-		-
-			message: "#^Method Storyblok\\\\Tiptap\\\\Mark\\\\Styled\\:\\:renderHTML\\(\\) has no return type specified\\.$#"
-			count: 1
-			path: src/Mark/Styled.php
-
-		-
-			message: "#^Method Storyblok\\\\Tiptap\\\\Mark\\\\Styled\\:\\:renderHTML\\(\\) has parameter \\$HTMLAttributes with no type specified\\.$#"
-			count: 1
-			path: src/Mark/Styled.php
-
-		-
-			message: "#^Method Storyblok\\\\Tiptap\\\\Mark\\\\Styled\\:\\:renderHTML\\(\\) has parameter \\$mark with no type specified\\.$#"
-			count: 1
-			path: src/Mark/Styled.php
-
-		-
-			message: "#^Property Storyblok\\\\Tiptap\\\\Mark\\\\Link\\:\\:\\$name has no type specified\\.$#"
+			message: "#^Method Storyblok\\\\Tiptap\\\\Mark\\\\Link\\:\\:addAttributes\\(\\) has no return type specified\\.$#"
 			count: 1
 			path: src/Mark/Link.php
 
 		-
 			message: "#^Method Storyblok\\\\Tiptap\\\\Mark\\\\Link\\:\\:addOptions\\(\\) has no return type specified\\.$#"
-			count: 1
-			path: src/Mark/Link.php
-
-		-
-			message: "#^Method Storyblok\\\\Tiptap\\\\Mark\\\\Link\\:\\:addAttributes\\(\\) has no return type specified\\.$#"
 			count: 1
 			path: src/Mark/Link.php
 
@@ -101,6 +36,76 @@ parameters:
 			path: src/Mark/Link.php
 
 		-
-			message: "#^Access to an undefined property object::\\$href\\.$#"
-			count: 2
+			message: "#^Property Storyblok\\\\Tiptap\\\\Mark\\\\Link\\:\\:\\$name has no type specified\\.$#"
+			count: 1
 			path: src/Mark/Link.php
+
+		-
+			message: "#^Method Storyblok\\\\Tiptap\\\\Mark\\\\Styled\\:\\:addAttributes\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/Mark/Styled.php
+
+		-
+			message: "#^Method Storyblok\\\\Tiptap\\\\Mark\\\\Styled\\:\\:addOptions\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/Mark/Styled.php
+
+		-
+			message: "#^Method Storyblok\\\\Tiptap\\\\Mark\\\\Styled\\:\\:parseHTML\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/Mark/Styled.php
+
+		-
+			message: "#^Method Storyblok\\\\Tiptap\\\\Mark\\\\Styled\\:\\:renderHTML\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/Mark/Styled.php
+
+		-
+			message: "#^Method Storyblok\\\\Tiptap\\\\Mark\\\\Styled\\:\\:renderHTML\\(\\) has parameter \\$HTMLAttributes with no type specified\\.$#"
+			count: 1
+			path: src/Mark/Styled.php
+
+		-
+			message: "#^Method Storyblok\\\\Tiptap\\\\Mark\\\\Styled\\:\\:renderHTML\\(\\) has parameter \\$mark with no type specified\\.$#"
+			count: 1
+			path: src/Mark/Styled.php
+
+		-
+			message: "#^Property Storyblok\\\\Tiptap\\\\Mark\\\\Styled\\:\\:\\$name has no type specified\\.$#"
+			count: 1
+			path: src/Mark/Styled.php
+
+		-
+			message: "#^Property Storyblok\\\\Tiptap\\\\Node\\\\Blok\\:\\:\\$name has no type specified\\.$#"
+			count: 1
+			path: src/Node/Blok.php
+
+		-
+			message: "#^Property Storyblok\\\\Tiptap\\\\Node\\\\BulletList\\:\\:\\$name has no type specified\\.$#"
+			count: 1
+			path: src/Node/BulletList.php
+
+		-
+			message: "#^Property Storyblok\\\\Tiptap\\\\Node\\\\CodeBlock\\:\\:\\$name has no type specified\\.$#"
+			count: 1
+			path: src/Node/CodeBlock.php
+
+		-
+			message: "#^Property Storyblok\\\\Tiptap\\\\Node\\\\Emoji\\:\\:\\$name has no type specified\\.$#"
+			count: 1
+			path: src/Node/Emoji.php
+
+		-
+			message: "#^Property Storyblok\\\\Tiptap\\\\Node\\\\HardBreak\\:\\:\\$name has no type specified\\.$#"
+			count: 1
+			path: src/Node/HardBreak.php
+
+		-
+			message: "#^Property Storyblok\\\\Tiptap\\\\Node\\\\ListItem\\:\\:\\$name has no type specified\\.$#"
+			count: 1
+			path: src/Node/ListItem.php
+
+		-
+			message: "#^Property Storyblok\\\\Tiptap\\\\Node\\\\OrderedList\\:\\:\\$name has no type specified\\.$#"
+			count: 1
+			path: src/Node/OrderedList.php
