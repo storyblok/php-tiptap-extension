@@ -63,7 +63,7 @@ final class LinkTest extends TestCase
 
         $result = (new Editor([
             'extensions' => [
-                new Link,
+                new Link(),
             ],
         ]))->setContent($document)->getHTML();
 
@@ -96,7 +96,7 @@ final class LinkTest extends TestCase
 
         $result = (new Editor([
             'extensions' => [
-                new Link,
+                new Link(),
             ],
         ]))->setContent($document)->getHTML();
 
@@ -132,7 +132,7 @@ final class LinkTest extends TestCase
 
         $result = (new Editor([
             'extensions' => [
-                new Link,
+                new Link(),
             ],
         ]))->setContent($document)->getHTML();
 

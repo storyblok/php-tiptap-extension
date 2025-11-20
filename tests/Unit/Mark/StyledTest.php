@@ -33,7 +33,7 @@ final class StyledTest extends TestCase
     {
         self::assertSame([
             'HTMLAttributes' => [
-                'class' => ''
+                'class' => '',
             ],
         ], (new Styled())->addOptions());
     }

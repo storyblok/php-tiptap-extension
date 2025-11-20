@@ -24,7 +24,7 @@ class Styled extends Mark
     {
         return [
             'HTMLAttributes' => [
-                'class' => ''
+                'class' => '',
             ],
         ];
     }
@@ -33,7 +33,7 @@ class Styled extends Mark
     {
         return [
             [
-                'tag' => 'span'
+                'tag' => 'span',
             ],
         ];
     }
