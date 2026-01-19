@@ -1,6 +1,11 @@
 parameters:
 	ignoreErrors:
 		-
+			message: "#^Property Storyblok\\\\Tiptap\\\\Mark\\\\Anchor\\:\\:\\$name has no type specified\\.$#"
+			count: 1
+			path: src/Mark/Anchor.php
+
+		-
 			message: "#^Access to an undefined property object\\:\\:\\$href\\.$#"
 			count: 2
 			path: src/Mark/Link.php

@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace Storyblok\Tiptap\Extension;
 
+use Storyblok\Tiptap\Mark\Anchor;
 use Storyblok\Tiptap\Mark\Link;
 use Storyblok\Tiptap\Mark\Styled;
 use Storyblok\Tiptap\Node\Blok;
@@ -123,6 +124,7 @@ final class Storyblok extends Extension
                 CodeBlock::$name => new CodeBlock(),
                 Emoji::$name => new Emoji(),
                 Styled::$name => new Styled(),
+                Anchor::$name => new Anchor(),
                 Blok::$name => new Blok([
                     'renderer' => $this->options['blokOptions']['renderer'],
                 ]),
