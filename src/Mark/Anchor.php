@@ -16,10 +16,13 @@ namespace Storyblok\Tiptap\Mark;
 use Tiptap\Core\Mark;
 use Tiptap\Utils\HTML;
 
-final class Anchor extends Mark
+class Anchor extends Mark
 {
     public static $name = 'anchor';
 
+    /**
+     * @return array<string, array<mixed>>
+     */
     public function addAttributes(): array
     {
         return [
@@ -27,7 +30,12 @@ final class Anchor extends Mark
         ];
     }
 
-    public function renderHTML($mark, $HTMLAttributes = []): array
+    /**
+     * @param array<string, mixed> $HTMLAttributes
+     *
+     * @return array<int|string, mixed>
+     */
+    public function renderHTML(mixed $mark, array $HTMLAttributes = []): array
     {
         return [
             'span',
