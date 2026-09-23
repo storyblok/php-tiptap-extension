@@ -32,9 +32,11 @@ final class LinkTest extends TestCase
      */
     public function addOptions(): void
     {
-        self::assertSame([
-            'HTMLAttributes' => [],
-        ], (new Link())->addOptions());
+        $options = (new Link())->addOptions();
+
+        self::assertSame([], $options['HTMLAttributes']);
+        self::assertArrayHasKey('allowedProtocols', $options);
+        self::assertArrayHasKey('isAllowedUri', $options);
     }
 
     /**
@@ -137,5 +139,69 @@ final class LinkTest extends TestCase
         ]))->setContent($document)->getHTML();
 
         self::assertSame('<a href="https://storyblok.com" title="title" custom="custom">Example Link</a>', $result);
+    }
+
+    /**
+     * @test
+     */
+    public function stripsJavascriptUris(): void
+    {
+        $document = [
+            'type' => 'doc',
+            'content' => [
+                [
+                    'type' => 'text',
+                    'text' => 'Example Link',
+                    'marks' => [
+                        [
+                            'type' => 'link',
+                            'attrs' => [
+                                'href' => 'javascript:alert(1)',
+                            ],
+                        ],
+                    ],
+                ],
+            ],
+        ];
+
+        $result = (new Editor([
+            'extensions' => [
+                new Link(),
+            ],
+        ]))->setContent($document)->getHTML();
+
+        self::assertSame('<a>Example Link</a>', $result);
+    }
+
+    /**
+     * @test
+     */
+    public function doesNotCrashOnNonStringHref(): void
+    {
+        $document = [
+            'type' => 'doc',
+            'content' => [
+                [
+                    'type' => 'text',
+                    'text' => 'Example Link',
+                    'marks' => [
+                        [
+                            'type' => 'link',
+                            'attrs' => [
+                                'href' => ['array', 'value'],
+                            ],
+                        ],
+                    ],
+                ],
+            ],
+        ];
+
+        $result = (new Editor([
+            'extensions' => [
+                new Link(),
+            ],
+        ]))->setContent($document)->getHTML();
+
+        self::assertSame('<a>Example Link</a>', $result);
     }
 }

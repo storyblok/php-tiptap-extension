@@ -16,7 +16,7 @@
     "require": {
         "php": ">=8.3",
         "thecodingmachine/safe": "^2.0 || ^3.0",
-        "ueberdosis/tiptap-php": "^1.4"
+        "ueberdosis/tiptap-php": "^2.1"
     },
     "require-dev": {
         "ergebnis/composer-normalize": "^2.2",
