@@ -13,27 +13,18 @@ declare(strict_types=1);
 
 namespace Storyblok\Tiptap\Mark;
 
-use Tiptap\Core\Mark;
+use Tiptap\Marks\Link as BaseLink;
 use Tiptap\Utils\HTML;
 
-class Link extends Mark
+class Link extends BaseLink
 {
     public static $name = 'link';
 
     public function addOptions()
     {
-        return [
+        return array_merge(parent::addOptions(), [
             'HTMLAttributes' => [],
-        ];
-    }
-
-    public function parseHTML()
-    {
-        return [
-            [
-                'tag' => 'a[href]',
-            ],
-        ];
+        ]);
     }
 
     public function addAttributes()
@@ -53,6 +44,10 @@ class Link extends Mark
 
         if (isset($mark->attrs->anchor) && $mark->attrs->anchor) {
             $HTMLAttributes['href'] = $mark->attrs->href.'#'.$mark->attrs->anchor;
+        }
+
+        if (! $this->options['isAllowedUri']($HTMLAttributes['href'] ?? null)) {
+            $HTMLAttributes['href'] = '';
         }
 
         if (isset($mark->attrs->custom)) {

@@ -21,11 +21,6 @@ parameters:
 			path: src/Mark/Link.php
 
 		-
-			message: "#^Method Storyblok\\\\Tiptap\\\\Mark\\\\Link\\:\\:parseHTML\\(\\) has no return type specified\\.$#"
-			count: 1
-			path: src/Mark/Link.php
-
-		-
 			message: "#^Method Storyblok\\\\Tiptap\\\\Mark\\\\Link\\:\\:renderHTML\\(\\) has no return type specified\\.$#"
 			count: 1
 			path: src/Mark/Link.php
