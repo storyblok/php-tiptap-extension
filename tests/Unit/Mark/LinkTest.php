@@ -204,4 +204,48 @@ final class LinkTest extends TestCase
 
         self::assertSame('<a>Example Link</a>', $result);
     }
+
+    /**
+     * @test
+     */
+    public function stripsJavascriptUrisWhenSubclassOverridesOptions(): void
+    {
+        $document = [
+            'type' => 'doc',
+            'content' => [
+                [
+                    'type' => 'text',
+                    'text' => 'Example Link',
+                    'marks' => [
+                        [
+                            'type' => 'link',
+                            'attrs' => [
+                                'href' => 'javascript:alert(1)',
+                            ],
+                        ],
+                    ],
+                ],
+            ],
+        ];
+
+        $link = new class() extends Link {
+            /**
+             * @return array<string, mixed>
+             */
+            public function addOptions(): array
+            {
+                return [
+                    'HTMLAttributes' => [],
+                ];
+            }
+        };
+
+        $result = (new Editor([
+            'extensions' => [
+                $link,
+            ],
+        ]))->setContent($document)->getHTML();
+
+        self::assertSame('<a>Example Link</a>', $result);
+    }
 }
